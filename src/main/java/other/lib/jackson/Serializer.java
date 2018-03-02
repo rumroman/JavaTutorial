@@ -1,4 +1,4 @@
-package general.tutorial.java8.jackson;
+package other.lib.jackson;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;

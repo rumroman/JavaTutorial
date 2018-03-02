@@ -2,6 +2,7 @@ package general.tutorial.java8.stream_api;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -32,10 +33,10 @@ import java.util.stream.Stream;
  * interface Stream<T> extends BaseStream
  *    T - тип элементов в потоке.
  *
- * Оконечная операция потребляет поток данныъ и дает конечный
+ * Оконечная операция потребляет поток данных и дает конечный
  * результат. Если поток данных потреблен, он не может быть
- * использован повоторно. Промежуточная операция прозводит по-
- * ток  данныъ и служит для создания конвейера для выполнения
+ * использован повторно. Промежуточная операция производит по-
+ * ток  данных и служит для создания конвейера для выполнения
  * последовательности действий . Кроме того, промежуточные
  * операции не выполняются немедленно.Напротив, указанное дей-
  * ствие происходит в том случае, когда оконечная операция
@@ -145,7 +146,7 @@ public class StreamApiDemo {
         productObj.ifPresent((integer) ->
                 System.out.println("Произведение в виде объекта типа Optional: "
                         + integer));
-        int product = myList.stream().reduce(-1, (a,b) -> a+b);
+        int product = myList.stream().reduce(0, (a,b) -> a+b);
         System.out.println(
                 "Произведение в виде значения типа int: " + product);
 

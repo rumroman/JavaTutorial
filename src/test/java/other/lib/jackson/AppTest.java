@@ -1,4 +1,4 @@
-package general.tutorial.java8.jackson;
+package other.lib.jackson;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

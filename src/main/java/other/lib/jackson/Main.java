@@ -1,7 +1,7 @@
-package general.tutorial.java8.jackson;
+package other.lib.jackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 
@@ -43,22 +43,25 @@ public class Main {
         ObjectMapper objectMapper = new ObjectMapper();
 
         human.setMapList(Collections.singletonList(Collections.singletonMap("ID",Collections.singletonMap("eq","40"))));
+        //human.setStringListMap(Collections.singletonMap("columns",Collections.singletonList(Collections.singletonMap("ID","int"))));
+
 
         TypeFactory typeFactory = objectMapper.getTypeFactory();
-        CollectionType collectionType = typeFactory.constructCollectionType(List.class,Map.class);
+        //CollectionType collectionType = typeFactory.constructCollectionType(List.class,Map.class);
+        MapType mapType = typeFactory.constructMapType(Map.class,String.class,Object.class);
 
-        objectMapper.writeValue(new FileOutputStream("/home/rum/Projects/human.txt"),human.getMapList());
+        //objectMapper.writeValue(new FileOutputStream("/home/rum/Projects/human.txt"),human.getStringListMap());
 
-        //objectMapper.writeValue(new FileOutputStream("/home/rum/Projects/human.txt"),human);
+        objectMapper.writeValue(new FileOutputStream("/home/rum/Projects/human.txt"),human);
         String json = "";
-        //json = objectMapper.writeValueAsString(human);
+        json = objectMapper.writeValueAsString(human);
         String filePath = "/home/rum/Projects/human.txt";
 
 
 
         try{
-            human = (Human)objectMapper.readValue(new FileInputStream(filePath),Human.class);
-            System.out.println(human);
+            Map<String,Object> mapObject = objectMapper.readValue(new FileInputStream(filePath),mapType);
+            System.out.println(mapObject);
         } catch(IOException e){
             System.out.println(e);
         }

@@ -29,6 +29,8 @@ interface MyFunc2{
 
 public class LambdaDemo {
 
+    //private int num ;
+
     public static int getNum() {
         return 1 + 1;
     }
@@ -39,8 +41,12 @@ public class LambdaDemo {
 
     public static void main(String args[]) {
 
+        int num = 5;
 
-        //MyTest a = n -> (n % 2) == 0;
+        //MyFunc2 a = n -> (n % 2) == 0;
+        MyFunc2 b = n -> {
+            return n + num;     // Захват переменнной num - локальная, завершенная(не изменяемая, иницаилизируется один раз) переменная
+        };
         //System.out.println("" + a.test(9));
 
         String inStr = "Лямбда выражения повышают эффективность Java";
@@ -113,7 +119,7 @@ public class LambdaDemo {
          */
 
         // Локальная переменная , которая может быть захвачена
-        int num = 10;
+        //int num = 10;
 
         MyFunc2 myLambda = (n) -> {
             int v = num + n;   // Такое применение переменной num допустимо

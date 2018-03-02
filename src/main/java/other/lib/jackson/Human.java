@@ -1,4 +1,4 @@
-package general.tutorial.java8.jackson;
+package other.lib.jackson;
 
 import lombok.Data;
 
@@ -10,6 +10,8 @@ public class Human {
     //private List<Map<String,Integer>> list;
 
     private List<Map<String,Map<String,Object>>> mapList;
+
+    //private Map<String,List<Map<String,Object>>> stringListMap;
 
 
 
