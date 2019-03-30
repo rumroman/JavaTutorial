@@ -46,7 +46,7 @@ public class LambdaConstr {
          */
         MyFunc<MyClass<Double>,Double> myClassDoubleMyFunc = MyClass<Double>::new;
 
-        // Создать класс экземпляра  типва класса Mtclass , используя фабричный метод
+        // Создать класс экземпляра  типа класса Mtclass , используя фабричный метод
         MyClass<Double> myClass = myClassDoubleMyFunc.func(100.1);
 
         System.out.println("Значение val равно " + myClass.getVal());
@@ -63,7 +63,7 @@ public class LambdaConstr {
 
 
         /** Как видите , метод myClassFactory() используется для создания обектов типа
-         * MyClass<Double> и MyClass2. Несмотря на отличия в боих классах, в частности,
+         * MyClass<Double> и MyClass2. Несмотря на отличия в обоих классах, в частности,
          * класс MyClass является обобщенным , а клсс MyClass2 - необобщенным , объекты
          * обоих классов могут быть созданы с помощью фабричного метода Myclass
          * Factory() , поскольку оба они содержат конструкторы, совместимые с методом

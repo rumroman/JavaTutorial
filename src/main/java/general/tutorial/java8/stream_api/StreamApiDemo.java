@@ -97,7 +97,7 @@ public class StreamApiDemo {
         // вывести только нечетные целочисленные значения,
         // вызвав метод filter()
         Stream<Integer> oddVals =
-                myList.stream().sorted().filter((n) -> (n % 2) == 1);
+                myList.stream().sorted().filter(n -> (n % 2) == 1);
         System.out.print("Нечетные значения: ");
         oddVals.forEach((n) -> System.out.print(n + " "));
         System.out.println();
@@ -110,6 +110,7 @@ public class StreamApiDemo {
         System.out.print("Нечетные значения больше 5: ");
         oddVals.forEach((n) -> System.out.print(n + " "));
         System.out.println();
+
 
         /**
          * Рассмотрим подробнее методы min() и max() из примера выше.

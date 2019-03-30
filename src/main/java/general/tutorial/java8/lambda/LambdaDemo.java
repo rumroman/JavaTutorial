@@ -2,6 +2,8 @@ package general.tutorial.java8.lambda;
 
 
 import com.fasterxml.jackson.core.type.TypeReference;
+
+import javax.swing.*;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -67,9 +69,8 @@ public class LambdaDemo {
         };
 
 
-
-
-
+        Timer t = new Timer(1000,System.out::println);
+        t.start();
 
 
 
@@ -151,4 +152,31 @@ public class LambdaDemo {
 }
 
 
+interface A {
+
+        int sum();
+}
+
+class B implements  A{
+
+
+    @Override
+    public int sum() {
+        return 0;
+    }
+}
+
+
+class C extends B {
+
+
+}
+
+class D {
+
+        public void s(){
+
+            A ac = new C();
+        }
+}
 

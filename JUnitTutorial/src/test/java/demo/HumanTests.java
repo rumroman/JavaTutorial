@@ -1,29 +1,35 @@
 package demo;
 
-import org.junit.Assert;
+import mockito.QueryDescription;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.*;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
+import org.junit.runner.RunWith;
 
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
-import static org.mockito.MockitoAnnotations.initMocks;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
+import static org.powermock.api.mockito.PowerMockito.when;
+import static org.powermock.api.support.membermodification.MemberMatcher.method;
 
+
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(Human.class)
 public class HumanTests {
 
     @Mock()
     Human human2;
 
-    @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
+
 
     private Human human;
 
@@ -152,6 +158,8 @@ public class HumanTests {
         List<String> list = new LinkedList<>();
         List<String> listSpy = spy(list);
 
+        listSpy.add("one");
+
 
         //this does not work
         // real method is called so spy.get(0)
@@ -170,7 +178,7 @@ public class HumanTests {
         List<String> listSpy = spy(list);
 
         //You have to use doReturn() for stubbing
-        doReturn("foo",listSpy.get(0));
+        //doReturn("foo",listSpy.get(0));
     }
 
     @Test
@@ -191,7 +199,7 @@ public class HumanTests {
         test.setAge(12);
 
         // now check if method testing was called with the parameter 12
-        verify(test).setAge(ArgumentMatchers.eq(12));
+        //verify(test).setAge(ArgumentMatchers.eq(12));
 
         // was the method called twice?                                                                         twice - дважды twice - дважды , twice - дважды
         verify(test,times(5)).getAge();                     // wanted Number of invocations - поиск количество вызовов.
@@ -214,10 +222,38 @@ public class HumanTests {
 
     }
 
+    @Test
+    public void testPrivateMethodSomeMethod() {
+
+        Human spy = PowerMockito.spy(new Human());
+
+        try {
+            //PowerMockito.when(spy,method(Human.class,"someMethod",String.class))
+             //       .withArguments("hello world!")
+             //       .thenReturn("hello");
+            PowerMockito.doReturn("hello world!").when(spy,"someMethod",anyString(),any(Sex.class));
+           // System.out.println(spy.some(new Sex()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testQueryDefault()  {
+
+        Human spy = PowerMockito.spy(new Human());
+        List<String> list = new ArrayList<>();
+        list.add("");
+
+        try {
+
+
+            PowerMockito.doReturn(list).when(spy,"queryDefault",any(String.class), any(QueryDescription.class), any(Class.class));
 
 
 
-
-
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

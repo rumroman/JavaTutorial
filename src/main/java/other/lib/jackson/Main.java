@@ -42,7 +42,7 @@ public class Main {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        human.setMapList(Collections.singletonList(Collections.singletonMap("ID",Collections.singletonMap("eq","40"))));
+        //human.setMapList(Collections.singletonList(Collections.singletonMap("ID",Collections.singletonMap("eq","40"))));
         //human.setStringListMap(Collections.singletonMap("columns",Collections.singletonList(Collections.singletonMap("ID","int"))));
 
 
@@ -66,7 +66,7 @@ public class Main {
             System.out.println(e);
         }
 
-        //Serializer serializer = new Serializer(new ObjectMapper());
+
 
         //human = serializer.deserializer(json,Human.class);
 
